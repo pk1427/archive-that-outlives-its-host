@@ -1,0 +1,8 @@
+{
+  "name": "spiti-archive-publisher",
+  "private": true,
+  "type": "module",
+  "scripts": { "publish": "tsx src/publish.ts", "recover": "tsx src/recover.ts", "check": "tsc --noEmit" },
+  "dependencies": { "@ethersphere/bee-js": "13.0.0", "dotenv": "16.4.5" },
+  "devDependencies": { "tsx": "4.19.2", "typescript": "5.6.3", "@types/node": "22.7.4" }
+}
