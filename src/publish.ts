@@ -25,12 +25,13 @@ const uploadedManifest = await bee.data.upload(batchId, JSON.stringify(manifest)
 
 // A network read occurs immediately before each update. An empty feed is a valid first publish.
 const writer = bee.feed.makeWriter(ids.topic, privateKey)
+let feedIndexNext: unknown
 try {
-  await bee.feed.fetchLatestUpdate(ids.topic, ids.feedOwner)
+  feedIndexNext = (await bee.feed.fetchLatestUpdate(ids.topic, ids.feedOwner)).feedIndexNext
 } catch (error) {
   console.info('No feed update yet; publishing the first archive revision.')
 }
-// Omitted index asks Bee to append after the network-resolved latest index.
-await writer.uploadReference(batchId, uploadedManifest.reference)
+// First publication omits an index; later revisions append using Bee's just-resolved next index.
+await writer.uploadReference(batchId, uploadedManifest.reference, feedIndexNext ? { index: feedIndexNext as never } : undefined)
 const batch = await bee.stamp.get(batchId)
 console.info(JSON.stringify({ archiveAddress: { owner: ids.feedOwner, topic: ids.topic }, manifest: uploadedManifest.reference.toString(), remainingLifetime: batch.duration.represent(), remainingLifetimeDays: batch.duration.toDays() }, null, 2))
