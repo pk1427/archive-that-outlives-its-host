@@ -1,5 +1,6 @@
 import 'dotenv/config'
 import { Bee } from '@ethersphere/bee-js'
+import { PrivateKey } from '@ethersphere/core-sdk'
 import { readdir, readFile } from 'node:fs/promises'
 import { join } from 'node:path'
 import ids from '../archive-identifiers.json' with { type: 'json' }
@@ -9,6 +10,10 @@ const batchId = process.env.POSTAGE_BATCH_ID
 const privateKey = process.env.FEED_PRIVATE_KEY
 const source = process.argv[2]
 if (!source || !batchId || !privateKey) throw new Error('Usage: POSTAGE_BATCH_ID=… FEED_PRIVATE_KEY=… npm run publish -- <folio-directory>')
+const signerOwner = new PrivateKey(privateKey).publicKey().address().toChecksum()
+if (signerOwner.toLowerCase() !== ids.feedOwner.toLowerCase()) {
+  throw new Error(`feedOwner (${ids.feedOwner}) does not match the local signer (${signerOwner}). Run npm run identity and update the tracked public identifier before publishing.`)
+}
 
 const bee = new Bee(endpoint)
 const files = await Promise.all((await readdir(source)).map(async name => {
@@ -28,4 +33,4 @@ try {
 // Omitted index asks Bee to append after the network-resolved latest index.
 await writer.uploadReference(batchId, uploadedManifest.reference)
 const batch = await bee.stamp.get(batchId)
-console.info(JSON.stringify({ archiveAddress: { owner: ids.feedOwner, topic: ids.topic }, manifest: uploadedManifest.reference.toString(), remainingLifetime: batch.duration.toString() }, null, 2))
+console.info(JSON.stringify({ archiveAddress: { owner: ids.feedOwner, topic: ids.topic }, manifest: uploadedManifest.reference.toString(), remainingLifetime: batch.duration.represent(), remainingLifetimeDays: batch.duration.toDays() }, null, 2))
