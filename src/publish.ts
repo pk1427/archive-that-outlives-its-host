@@ -16,11 +16,12 @@ if (signerOwner.toLowerCase() !== ids.feedOwner.toLowerCase()) {
 }
 
 const bee = new Bee(endpoint)
+const collectionMetadata = JSON.parse(await readFile(new URL('../collection-metadata.json', import.meta.url), 'utf8'))
 const files = await Promise.all((await readdir(source)).map(async name => {
   const uploaded = await bee.data.upload(batchId, await readFile(join(source, name)))
   return { name, reference: uploaded.reference.toString() }
 }))
-const manifest = { format: ids.format, version: ids.formatVersion, publishedAt: new Date().toISOString(), files }
+const manifest = { format: ids.format, version: ids.formatVersion, publishedAt: new Date().toISOString(), collection: collectionMetadata, files }
 const uploadedManifest = await bee.data.upload(batchId, JSON.stringify(manifest))
 
 // A network read occurs immediately before each update. An empty feed is a valid first publish.

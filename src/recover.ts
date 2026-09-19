@@ -7,7 +7,8 @@ const bee = new Bee(endpoint)
 const reader = bee.feed.makeReader(ids.topic, ids.feedOwner)
 const update = await reader.downloadReference()
 const manifestResponse = await bee.data.download(update.reference)
-const manifest = JSON.parse(manifestResponse.toUtf8()) as { files: { name: string; reference: string }[] }
+const manifest = JSON.parse(manifestResponse.toUtf8()) as { collection?: { collection?: string; description?: string }; files: { name: string; reference: string }[] }
+if (manifest.collection?.collection) console.log(`${manifest.collection.collection}\n${manifest.collection.description ?? ''}\n`)
 for (const file of manifest.files) {
   const bytes = await bee.data.download(file.reference)
   console.log(`${file.name}\t${bytes.length} bytes\t${file.reference}`)

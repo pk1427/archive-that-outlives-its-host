@@ -1,0 +1,12 @@
+{
+  "collection": "Spiti Birch-Bark Folios — Demonstration Archive",
+  "collectionVersion": 1,
+  "description": "A small public demonstration collection modelled on a conservation digitisation workflow. It records provenance and preservation information alongside independently addressable folio files.",
+  "rights": "Demonstration metadata and transcriptions: CC BY 4.0. No claim is made over the underlying cultural materials.",
+  "preservation": {
+    "storageModel": "Swarm postage batch with renewable duration",
+    "publicRecovery": "Feed owner and topic resolve the current collection manifest without publisher credentials.",
+    "integrity": "Each folio is separately content-addressed; its reference changes if its bytes change."
+  },
+  "curatorialNote": "This repository intentionally uses harmless sample text rather than photographs of protected manuscripts."
+}

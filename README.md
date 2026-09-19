@@ -1,6 +1,6 @@
 # Spiti archive publisher
 
-This is a content-addressed archive with a stable Swarm feed as its public address. The feed contains a reference to an uploaded collection manifest; the manifest names every separately uploaded folio. That is why a reader needs only the public owner/topic pair in `archive-identifiers.json`, not this application or its disk. See [live publication evidence](LIVE-PUBLICATION.md) for a real published collection and recovery result.
+This is a content-addressed archive with a stable Swarm feed as its public address. The feed contains a reference to an uploaded collection manifest; the manifest names every separately uploaded folio and carries collection provenance/preservation metadata. That is why a reader needs only the public owner/topic pair in `archive-identifiers.json`, not this application or its disk. See [live publication evidence](LIVE-PUBLICATION.md) for a real published collection and recovery result.
 
 ## Publish
 

@@ -1,0 +1,5 @@
+Collection note
+
+The archive is structured for recovery, not merely display. Each folio is uploaded separately and named in a content-addressed manifest. The stable feed points to the current manifest revision, so cataloguing corrections and additional scans can be published without changing the address handed to readers.
+
+Preservation is a continuing responsibility: a paid Swarm batch has an expiry estimate, and the publisher surfaces that estimate after every revision.

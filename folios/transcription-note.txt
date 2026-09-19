@@ -1,0 +1,5 @@
+Transcription note
+
+This harmless demonstration transcription represents a readable companion to a photographed folio. It is deliberately stored as its own file rather than embedded in an application database. A future cataloguer can retrieve this file from the manifest reference, validate its content address, and replace it with a corrected revision by publishing a new manifest through the same stable feed.
+
+The recovery path does not assume any particular web interface, a local cache, a cloud account, or the original publisher's credentials.
