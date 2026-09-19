@@ -27,3 +27,11 @@ Reproduce with `npm run recover -- --bee http://localhost:1633`. The recovery pr
 ## Honest permanence statement
 
 The node reads and displays the selected batch's remaining duration at each publish. Swarm availability remains a paid storage commitment: the collection is recoverable while its batch is funded and must be renewed before expiry.
+
+## Current revision — 2026-09-20
+
+The archive was republished as a richer collection manifest:
+
+`21ee1790d98f075997d979e91da4cb8dceadb5cfa18210c468abea7156a600ba`
+
+Recovery through the unchanged feed returned five separately addressable files, including provenance and transcription notes. At publication the Bee node reported **22 hours** (`0.953 days`) of paid duration remaining on the selected batch. This is a deliberately visible warning, not a claim of permanence: the responsible custodian must top up the existing batch before that time elapses.
