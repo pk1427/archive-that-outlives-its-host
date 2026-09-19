@@ -1,7 +1,7 @@
 {
   "description": "Public recovery identifiers for the Spiti folio archive. Neither value is a secret.",
   "feedOwner": "0x7B9f4F0c7a0cA9B4d46F1a2e5fB91C75d09aE4C2",
-  "topic": "spiti-birch-bark-folios-v1",
+  "topic": "0x7b2e4e4ce0d827b0f9e2398bf05df5fccca63ee9c027bd224852964bbc27f2f1",
   "format": "spiti-archive-manifest",
   "formatVersion": 1
 }

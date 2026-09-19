@@ -4,7 +4,7 @@ This is a content-addressed archive with a stable Swarm feed as its public addre
 
 ## Publish
 
-Start a funded Bee/Swarm Desktop node in light mode, set `FEED_PRIVATE_KEY` and `POSTAGE_BATCH_ID` in a local `.env`, then run `npm run publish -- ./folios`. The private key must correspond to the public `feedOwner`; change the tracked owner before first publication if using a different key.
+Start a funded Bee/Swarm Desktop node in light mode, set `FEED_PRIVATE_KEY` and `POSTAGE_BATCH_ID` in a local `.env`, then run `npm run identity` and replace `feedOwner` in `archive-identifiers.json` with the printed public address before committing it. Then run `npm run publish -- ./folios`.
 
 The command reads the batch TTL from the node and prints it. Storage is paid only until that TTL; it is not an eternal guarantee.
 
